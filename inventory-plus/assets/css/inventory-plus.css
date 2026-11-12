@@ -1,0 +1,729 @@
+/*
+** Inventory Plus - styles. Loaded only on module pages.
+** Light/dark aware via the "color-scheme" attribute Zabbix sets on <html> (blue, dark, high-contrast themes).
+*/
+
+:root {
+	--ip-panel-bg: #ffffff;
+	--ip-panel-border: #dfe4e7;
+	--ip-text: #1f2c33;
+	--ip-muted: #768d99;
+	--ip-track: #ebeef0;
+	--ip-accent: #0275b8;
+	--ip-accent-rgb: 2, 117, 184;
+	--ip-good: #59db8f;
+	--ip-fair: #f4af25;
+	--ip-poor: #e45959;
+	--ip-badge-bg: #ebeef0;
+	--ip-badge-auto-bg: #d9ecf7;
+	--ip-badge-auto-fg: #0a5a8a;
+	--ip-badge-warn-bg: #fff1d6;
+	--ip-badge-warn-fg: #8a5a00;
+	--ip-hover: #f6f8f9;
+}
+
+html[color-scheme="dark"] {
+	--ip-panel-bg: #2b2b2b;
+	--ip-panel-border: #383838;
+	--ip-text: #f2f2f2;
+	--ip-muted: #999999;
+	--ip-track: #383838;
+	--ip-accent: #4796c4;
+	--ip-accent-rgb: 71, 150, 196;
+	--ip-badge-bg: #383838;
+	--ip-badge-auto-bg: #1f3a4d;
+	--ip-badge-auto-fg: #a9d4f0;
+	--ip-badge-warn-bg: #4a3b16;
+	--ip-badge-warn-fg: #f4d27a;
+	--ip-hover: #333333;
+}
+
+/* ---------- Generic ---------- */
+
+.ip-subtle {
+	color: var(--ip-muted);
+}
+
+.ip-hint {
+	margin-top: 4px;
+	color: var(--ip-muted);
+}
+
+.ip-ellipsis {
+	display: inline-block;
+	max-width: 280px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: bottom;
+}
+
+.ip-pre-wrap {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.ip-panel {
+	background: var(--ip-panel-bg);
+	border: 1px solid var(--ip-panel-border);
+	border-radius: 2px;
+	padding: 12px 14px;
+	margin-bottom: 12px;
+	box-sizing: border-box;
+	color: var(--ip-text);
+}
+
+.ip-panel-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 10px;
+}
+
+.ip-panel-header h4 {
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ip-badge {
+	display: inline-block;
+	padding: 1px 6px;
+	margin-left: 4px;
+	border-radius: 9px;
+	font-size: 11px;
+	line-height: 16px;
+	white-space: nowrap;
+	background: var(--ip-badge-bg);
+	color: var(--ip-text);
+	vertical-align: middle;
+}
+
+.ip-badge:first-child {
+	margin-left: 0;
+}
+
+.ip-badge-auto {
+	background: var(--ip-badge-auto-bg);
+	color: var(--ip-badge-auto-fg);
+}
+
+.ip-badge-manual {
+	background: var(--ip-badge-bg);
+}
+
+.ip-badge-muted {
+	background: transparent;
+	border: 1px solid var(--ip-panel-border);
+	color: var(--ip-muted);
+}
+
+.ip-badge-warn {
+	background: var(--ip-badge-warn-bg);
+	color: var(--ip-badge-warn-fg);
+	cursor: help;
+}
+
+.ip-empty {
+	padding: 20px 0;
+	text-align: center;
+	color: var(--ip-muted);
+}
+
+/* ---------- Meters ---------- */
+
+.ip-meter {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	min-width: 110px;
+}
+
+.ip-meter-track {
+	flex: 1 1 auto;
+	height: 6px;
+	min-width: 60px;
+	background: var(--ip-track);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.ip-meter-fill {
+	height: 100%;
+	border-radius: 3px;
+	background: var(--ip-accent);
+}
+
+.ip-meter-good {
+	background: var(--ip-good);
+}
+
+.ip-meter-fair {
+	background: var(--ip-fair);
+}
+
+.ip-meter-poor {
+	background: var(--ip-poor);
+}
+
+.ip-meter-label {
+	min-width: 34px;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Explorer ---------- */
+
+.ip-conditions td {
+	padding: 0 5px 5px 0;
+	vertical-align: middle;
+}
+
+.ip-summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 8px;
+}
+
+.ip-summary-count {
+	font-weight: bold;
+}
+
+.ip-explorer-table .ip-col-host {
+	white-space: nowrap;
+}
+
+.ip-explorer-table .ip-col-host .ip-subtle {
+	font-size: 11px;
+}
+
+.ip-explorer-table .ip-col-wrap {
+	white-space: normal;
+	max-width: 260px;
+}
+
+.ip-explorer-table .ip-col-tags .tag {
+	margin: 1px 3px 1px 0;
+}
+
+/* Column list popup (table options). */
+
+.ip-summary {
+	justify-content: space-between;
+}
+
+.ip-summary-info {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+}
+
+.ip-table-options {
+	position: relative;
+}
+
+.ip-popover {
+	position: absolute;
+	top: calc(100% + 4px);
+	right: 0;
+	z-index: 1000;
+	width: 380px;
+	max-width: calc(100vw - 32px);
+	display: flex;
+	flex-direction: column;
+	max-height: min(640px, 75vh);
+	background: var(--ip-panel-bg);
+	border: 1px solid var(--ip-panel-border);
+	border-radius: 2px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+	color: var(--ip-text);
+}
+
+.ip-popover-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 10px 12px 6px;
+}
+
+.ip-popover-title {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.ip-popover .ip-col-search {
+	margin: 0 12px 8px;
+	width: auto;
+	box-sizing: border-box;
+}
+
+.ip-popover-body {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	padding: 0 12px 8px;
+	border-top: 1px solid var(--ip-panel-border);
+}
+
+.ip-popover-footer {
+	display: flex;
+	gap: 8px;
+	padding: 10px 12px;
+	border-top: 1px solid var(--ip-panel-border);
+}
+
+.ip-popover-footer button:nth-child(2) {
+	margin-left: auto;
+}
+
+.ip-col-group-title {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	margin: 10px 0 4px;
+	font-weight: bold;
+}
+
+.ip-col-group-title .ip-subtle {
+	font-weight: normal;
+	font-size: 11px;
+}
+
+.ip-col-section-title {
+	margin: 8px 0 2px;
+	color: var(--ip-muted);
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.ip-col-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ip-col-selected {
+	min-height: 28px;
+	padding: 2px;
+	border: 1px dashed var(--ip-panel-border);
+	border-radius: 2px;
+}
+
+.ip-col-item {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 3px 4px;
+	border-radius: 2px;
+}
+
+.ip-col-item:hover {
+	background: var(--ip-hover);
+}
+
+.ip-col-item label {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.ip-col-item .ip-col-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ip-col-item .ip-col-section {
+	margin-left: auto;
+	color: var(--ip-muted);
+	font-size: 11px;
+	white-space: nowrap;
+}
+
+/* Drag handle only for displayed, movable columns. */
+.ip-col-handle {
+	visibility: hidden;
+	flex: 0 0 auto;
+}
+
+.ip-col-draggable .ip-col-handle {
+	visibility: visible;
+	cursor: grab;
+}
+
+.ip-col-draggable {
+	cursor: grab;
+}
+
+.ip-col-dragging {
+	opacity: 0.45;
+}
+
+.ip-col-fixed {
+	color: var(--ip-muted);
+}
+
+.ip-col-nomatch {
+	padding: 10px 0;
+	text-align: center;
+}
+
+/* ---------- Analytics ---------- */
+
+.ip-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 22px;
+	padding: 8px 0 12px;
+}
+
+.ip-toolbar-item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.ip-kpis {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.ip-kpi {
+	background: var(--ip-panel-bg);
+	border: 1px solid var(--ip-panel-border);
+	border-left: 3px solid var(--ip-accent);
+	border-radius: 2px;
+	padding: 10px 14px;
+	color: var(--ip-text);
+}
+
+.ip-kpi-warn {
+	border-left-color: var(--ip-fair);
+}
+
+.ip-kpi-label {
+	color: var(--ip-muted);
+	font-size: 12px;
+}
+
+.ip-kpi-value {
+	font-size: 26px;
+	line-height: 34px;
+	font-weight: bold;
+	font-variant-numeric: tabular-nums;
+}
+
+.ip-kpi-note {
+	color: var(--ip-muted);
+	font-size: 11px;
+}
+
+.ip-analytics-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+	gap: 12px;
+	align-items: start;
+}
+
+@media (max-width: 1100px) {
+	.ip-analytics-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.ip-bar-row {
+	display: grid;
+	grid-template-columns: minmax(140px, 32%) minmax(80px, 1fr) 48px 52px;
+	align-items: center;
+	gap: 10px;
+	padding: 4px 0;
+	border-bottom: 1px solid var(--ip-panel-border);
+}
+
+.ip-bar-row:last-child {
+	border-bottom: 0;
+}
+
+.ip-bar-row:hover {
+	background: var(--ip-hover);
+}
+
+.ip-bar-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ip-bar-track {
+	height: 14px;
+	background: var(--ip-track);
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.ip-bar-fill {
+	height: 100%;
+	background: var(--ip-accent);
+	border-radius: 2px;
+}
+
+.ip-bar-other .ip-bar-fill {
+	background: var(--ip-muted);
+}
+
+.ip-bar-empty .ip-bar-fill {
+	background: var(--ip-fair);
+}
+
+.ip-bar-other .ip-bar-label,
+.ip-bar-empty .ip-bar-label {
+	font-style: italic;
+}
+
+.ip-bar-count,
+.ip-bar-share {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+.ip-bar-share {
+	color: var(--ip-muted);
+}
+
+.ip-fill {
+	max-height: 720px;
+	overflow-y: auto;
+	padding-right: 4px;
+}
+
+.ip-fill-section {
+	margin: 10px 0 4px;
+	font-weight: bold;
+	color: var(--ip-muted);
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: 0.04em;
+}
+
+.ip-fill-section:first-child {
+	margin-top: 0;
+}
+
+.ip-fill-row {
+	display: grid;
+	grid-template-columns: minmax(120px, 45%) 1fr 40px;
+	align-items: center;
+	gap: 8px;
+	padding: 2px 0;
+}
+
+.ip-fill-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ip-fill-name.ip-selected {
+	font-weight: bold;
+}
+
+.ip-fill-pct {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	color: var(--ip-muted);
+}
+
+.ip-crosstab-scroll {
+	overflow-x: auto;
+}
+
+.ip-crosstab {
+	border-collapse: collapse;
+	min-width: 100%;
+}
+
+.ip-crosstab th,
+.ip-crosstab td {
+	padding: 5px 8px;
+	border: 1px solid var(--ip-panel-border);
+	text-align: center;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.ip-crosstab .ip-ct-corner,
+.ip-crosstab .ip-ct-rowhead {
+	text-align: left;
+}
+
+.ip-crosstab .ip-ct-head {
+	max-width: 140px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ip-crosstab .ip-ct-rowhead {
+	max-width: 240px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ip-crosstab td[data-heat] {
+	background-color: rgba(var(--ip-accent-rgb), var(--ip-i, 0));
+}
+
+.ip-crosstab td.ip-ct-strong,
+.ip-crosstab td.ip-ct-strong a {
+	color: #ffffff;
+}
+
+.ip-crosstab .ip-ct-total {
+	font-weight: bold;
+}
+
+/* ---------- Host card ---------- */
+
+.ip-btn-link {
+	display: inline-block;
+	line-height: 22px;
+	padding: 0 10px;
+	text-decoration: none;
+}
+
+.ip-hero {
+	display: grid;
+	grid-template-columns: minmax(200px, auto) 1fr;
+	gap: 10px 24px;
+	align-items: center;
+}
+
+.ip-hero-title {
+	margin: 0;
+	font-size: 20px;
+	line-height: 26px;
+}
+
+.ip-hero-meta {
+	grid-column: 1 / -1;
+}
+
+.ip-hero-line {
+	margin-top: 4px;
+}
+
+.ip-hero-line .tag {
+	margin: 1px 3px 1px 0;
+}
+
+.ip-facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 28px;
+	justify-content: flex-end;
+}
+
+.ip-fact-label {
+	color: var(--ip-muted);
+	font-size: 11px;
+	margin-bottom: 3px;
+}
+
+.ip-fact-value {
+	min-height: 18px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.ip-sev-chip {
+	display: inline-block;
+	min-width: 22px;
+	padding: 1px 6px;
+	border-radius: 2px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.ip-card-toolbar {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 4px 0 10px;
+}
+
+.ip-card-toolbar .ip-subtle {
+	margin-left: 16px;
+}
+
+.ip-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+	gap: 12px;
+	align-items: start;
+}
+
+.ip-cards .ip-card {
+	margin-bottom: 0;
+}
+
+.ip-card-row {
+	display: grid;
+	grid-template-columns: minmax(120px, 40%) 1fr;
+	gap: 10px;
+	padding: 4px 0;
+	border-bottom: 1px dashed var(--ip-panel-border);
+}
+
+.ip-card-row:last-child {
+	border-bottom: 0;
+}
+
+.ip-card-label {
+	color: var(--ip-muted);
+}
+
+.ip-card-value {
+	word-break: break-word;
+}
+
+.ip-cards .ip-field-empty {
+	display: none;
+}
+
+.ip-cards.ip-show-empty .ip-field-empty {
+	display: grid;
+}
+
+.ip-cards.ip-show-empty .ip-field-empty .ip-card-value {
+	color: var(--ip-muted);
+}
+
+.ip-cards .ip-card-empty {
+	opacity: 0.7;
+}
+
+.ip-card-nodata {
+	color: var(--ip-muted);
+	padding: 4px 0;
+}
+
+.ip-cards.ip-show-empty .ip-card-nodata {
+	display: none;
+}
+
+.ip-map {
+	height: 220px;
+	margin-bottom: 10px;
+	border: 1px solid var(--ip-panel-border);
+	border-radius: 2px;
+}
